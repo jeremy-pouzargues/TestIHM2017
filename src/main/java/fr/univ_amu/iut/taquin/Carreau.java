@@ -5,46 +5,49 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class Carreau extends Button {
-    private Integer numero;
+
+
+public class Carreau extends Button
+{
+    private Integer value;
     private Position position;
     private Position positionAttendue;
 
 
-    public Carreau(Integer numero, Position position) {
-        final int tailleCarreau = TaquinBoard.TAILLE_CASE;
-        this.numero = numero;
+    public Carreau (Integer numero, Position position)
+    {
+        this.value = numero;
         this.position = position;
-        this.positionAttendue = new Position(position.getX(), position.getY());
+        this.positionAttendue = position;
 
-        setMinSize(tailleCarreau, tailleCarreau);
-        setMaxSize(tailleCarreau, tailleCarreau);
-        setPrefSize(tailleCarreau, tailleCarreau);
+        this.setMinSize(TaquinBoard.TAILLE_CASE,TaquinBoard.TAILLE_CASE);
+        this.setPrefSize(TaquinBoard.TAILLE_CASE,TaquinBoard.TAILLE_CASE);
+        this.setMaxSize(TaquinBoard.TAILLE_CASE, TaquinBoard.TAILLE_CASE);
 
-        setAlignment(Pos.CENTER);
-
-        setText(numero.toString());
-        setFont(Font.font("Monospace", FontWeight.BOLD, 20));
+        this.setAlignment(Pos.CENTER);
+        this.setText(numero.toString());
     }
 
-    public Integer getNumero() {
-        return numero;
+
+    public Integer getValue()
+    {
+        return value;
     }
 
-    public Position getPosition() {
+    public Position getPosition()
+    {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition (Position position)
+    {
         this.position = position;
     }
 
-    public boolean estBienPlace() {
-        return positionAttendue.equals(position);
+    public boolean estBienPlace()
+    {
+        return this.position == this.positionAttendue;
     }
 
-    @Override
-    public String toString() {
-        return "Carreau{" + "numero=" + numero + ", position=" + position + '}';
-    }
+
 }
